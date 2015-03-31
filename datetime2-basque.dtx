@@ -20,7 +20,7 @@
 % \iffalse
 % Doc-Source file to use with LaTeX2e
 % Copyright (C) 2015 Nicola Talbot, all rights reserved.
-% (New maintainer add relevant lines here.)
+% Maintainer Zunbeltz Izaola. Based on the basque-date package by dorta Ibarra.
 % \fi
 % \iffalse
 %<*driver>
@@ -127,13 +127,18 @@
 % a suffix is required.
 %    \begin{macrocode}
 \newcommand*{\DTMbasqueordinal}[1]{%
-  \number#1 % space intended
+  \number#1%
+  \ifcase\number#1 %declination for the day (inessive case)
+  \or a\or a\or a\or a\or a\or a\or a\or a\or a\or a\or \or
+  a\or a\or a\or a\or a\or a\or a\or a\or a\or a\or a\or a\or
+  a\or a\or a\or a\or a\or a\or a\or\fi% 
+ % space intended
 }
 %    \end{macrocode}
 %\end{macro}
 %
 %\begin{macro}{\DTMbasquemonthname}
-% Basque month names.
+% Basque declined month names.
 %    \begin{macrocode}
 \newcommand*{\DTMbasquemonthname}[1]{%
   \ifcase#1
@@ -220,8 +225,37 @@
 %
 %\begin{macro}{\DTMbasqueyearmonthsep}
 % The separator between the month and year for the text format.
+% According to the Basque declination rules for year
 %    \begin{macrocode}
-\newcommand*{\DTMbasqueyearmonthsep}{.eko\space}
+\newcommand*{\DTMbasqueyearmonthsep}{\ifcase\DTMtwodigits{\@dtm@currentyear}
+  %Declination for the year
+  %00-20
+		  ko \or eko \or ko \or ko \or ko \or eko \or ko
+		  \or ko \or ko \or ko \or eko \or ko \or ko 
+		  \or ko \or ko \or eko \or ko \or ko \or ko  
+		  \or ko \or ko \or 
+		  %21-40
+		  eko \or ko \or ko \or ko \or eko \or ko
+		  \or ko \or ko \or ko \or eko \or ko \or ko 
+		  \or ko \or ko \or eko \or ko \or ko \or ko  
+		  \or ko \or ko \or
+		  %41-60
+		  eko \or ko \or ko \or ko \or eko \or ko
+		  \or ko \or ko \or ko \or eko \or ko \or ko 
+		  \or ko \or ko \or eko \or ko \or ko \or ko  
+		  \or ko \or ko \or
+		  %61-80
+		  eko \or ko \or ko \or ko \or eko \or ko
+		  \or ko \or ko \or ko \or eko \or ko \or ko 
+		  \or ko \or ko \or eko \or ko \or ko \or ko  
+		  \or ko \or ko \or
+		  %81-100
+		  eko \or ko \or ko \or ko \or eko \or ko
+		  \or ko \or ko \or ko \or eko \or ko \or ko 
+		  \or ko \or ko \or eko \or ko \or ko \or ko  
+		  \or ko \or eko								
+		\fi%
+\space}
 %    \end{macrocode}
 %\end{macro}
 %
