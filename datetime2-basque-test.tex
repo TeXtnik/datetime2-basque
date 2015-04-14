@@ -1,4 +1,4 @@
-\documentclass[basque]{article}
+\documentclass[basque, twocolumn]{article}
 \usepackage{babel}
 \usepackage[useregional]{datetime2}
 \usepackage{pgffor}
@@ -16,7 +16,7 @@
 \makeatother
 
 \begin{document}
-
+\DTMlangsetup[basque]{inessive=true}
 \foreach \myyear in {2000,...,2005}{
   \changeyear{\myyear}
   \foreach \mymonth in {1,...,12}{
@@ -25,6 +25,7 @@
       \changeday{\myday}
       \today\par
     }
+    \newpage
   }
 }
 
