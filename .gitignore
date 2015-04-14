@@ -4,3 +4,6 @@ datetime2-basque.ldf
 *.aux
 *.pdf
 *~
+*.glo
+*.idx
+*.out

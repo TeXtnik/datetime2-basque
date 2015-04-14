@@ -37,7 +37,7 @@
             pdftitle={datetime2.sty Basque Module}]{hyperref}
 
 
-\CheckSum{204}
+\CheckSum{378}
 
 \renewcommand*{\usage}[1]{\hyperpage{#1}}
 \renewcommand*{\main}[1]{\hyperpage{#1}}
@@ -60,13 +60,10 @@
 %\MakeShortVerb{"}
 %
 %\title{Basque Module for datetime2 Package}
-%\author{Nicola L. C. Talbot (inactive)}
+%\author{Zunbeltz Izaola \and Nicola L. C. Talbot (inactive)}
 %\date{2015-03-29 (v1.0)}
 %\maketitle
 %
-%This module is currently unmaintained and may be subject to change.
-%If you want to volunteer to take over maintanance, contact me at
-%\url{http://www.dickimaw-books.com/contact.html}
 %
 %\begin{abstract}
 %This is the Basque language module for the \sty{datetime2}
@@ -79,26 +76,28 @@
 % Alternatively, you can set the style in the document using
 % \cs{DTMsetstyle}, but this may be changed by \cs{date}\meta{language}
 % depending on the value of the \opt{useregional} setting.
+% Currently there is only a regionless style.
 %\end{abstract}
 %
-%I've copied the date style from \texttt{babel-basque}'s \cs{today}.
+% \section{Introduction}
 %
-%I don't know if these settings are correct.
-%In particular, I don't know if the "basque" time style is
-%correct. Currently this just uses the "default" time style. Please
-%be aware that this may change. Whoever takes over maintanance
-%of this module may can change it as appropriate.
+% According to The Basque Language Academy (\textit{Euskaltzaindia}), there 
+% are various correct forms to display the date in Basque.\footnote{\textit{37. 
+% araua. Data nola adierazi}: \url{http://euskaltzaindia.net/dok/arauak/Araua\_0037.pdf}} 
+% The most used form, which includes the name of the location where the document or 
+% text has been written, is the following:
 %
-%The new maintainer should add the line:
-%\begin{verbatim}
-% The Current Maintainer of this work is Name.
-%\end{verbatim}
-%to the preamble part in \texttt{datetime2-basque.ins} where Name
-%is the name of the maintainer(s) and replace
-%the `inactive' status to `maintained'.
-%
-%Currently there is only a regionless style.
-%
+% \begin{center}
+% \textit{Durango(n), 1983ko martxoaren 7a(n)},
+% \end{center}
+% where the inessive case \textit{``n''} is optional. It must be taken into account 
+% that the declination of numbers in Basque is not straightforward. 
+% The inessive case is deactivated by default. To activate it, set the 
+% \sty{inessive} boolean option to \sty{true} with \cs{DTMlangsetup}:
+% \begin{verbatim}
+% \DTMlangsetup[basque]{inessive=true}
+% \end{verbatim}
+
 %\StopEventually{%
 %\clearpage
 %\phantomsection
@@ -106,6 +105,7 @@
 %\PrintChanges
 %\addcontentsline{toc}{section}{\indexname}%
 %\PrintIndex}
+%
 %\section{The Code}
 %At the moment there is only the one ".ldf" file.
 %
@@ -122,16 +122,29 @@
 %    \begin{macrocode}
 \ProvidesDateTimeModule{basque}[2015/03/29 v1.0]
 %    \end{macrocode}
+%
+% Define a boolean to  use the inessive case. It is not used by default.
+%
+%    \begin{macrocode}
+\DTMdefboolkey{basque}{inessive}[false]{} 
+%    \end{macrocode}
+
 %\begin{macro}{\DTMbasqueordinal}
-% I don't know if this is correct, but it's provided in case 
-% a suffix is required.
+% Numbers are declined according to to the case.
 %    \begin{macrocode}
 \newcommand*{\DTMbasqueordinal}[1]{%
   \number#1%
-  \ifcase\number#1 %declination for the day (inessive case)
-  \or a\or a\or a\or a\or a\or a\or a\or a\or a\or a\or \or
-  a\or a\or a\or a\or a\or a\or a\or a\or a\or a\or a\or a\or
-  a\or a\or a\or a\or a\or a\or a\or\fi% 
+  \DTMifbool{basque}{inessive}{%
+    \ifcase\number#1 %declination for the day (inessive case)
+    \or ean\or an\or an\or an\or ean\or an\or an\or an\or an\or ean\or
+    n\or an\or an\or an\or ean\or an\or an\or an\or an\or an\or ean\or
+    an\or an\or an\or ean\or an\or an\or an\or an\or ean\or n\fi %
+  }{%
+    \ifcase\number#1 %declination for the day (absolutive case)
+    \or a\or a\or a\or a\or a\or a\or a\or a\or a\or a\or \or
+    a\or a\or a\or a\or a\or a\or a\or a\or a\or a\or a\or a\or
+    a\or a\or a\or a\or a\or a\or a\or\fi%
+  }
  % space intended
 }
 %    \end{macrocode}
