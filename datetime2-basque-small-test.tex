@@ -3,12 +3,8 @@
 \usepackage[]{datetime2}
 \usepackage{pgffor}
 
-\begin{document}
-\foreach \style in {basque, basque-numeric}{
-%\style
-%}
-\noindent\texttt{DTMsetstyle\{\style\}} \DTMsetstyle{\style}
- 
+
+\newcommand{\test}{%
 \noindent This PDF was created on \today.
 
 \noindent This PDF was created on \DTMnow.
@@ -30,6 +26,21 @@
 
 \vspace*{\baselineskip}
 }
+
+\begin{document}
+\foreach \style in {basque, basque-numeric}{
+%\style
+%}
+\noindent\texttt{DTMsetstyle\{\style\}} \DTMsetstyle{\style}
+ 
+\test
+}
+
+\DTMlangsetup[basque]{inessive=true}
+\DTMsetstyle{basque}
+ 
+\test
+
 
 \end{document}
 

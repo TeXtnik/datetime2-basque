@@ -138,14 +138,13 @@
     \ifcase\number#1 %declination for the day (inessive case)
     \or ean\or an\or an\or an\or ean\or an\or an\or an\or an\or ean\or
     n\or an\or an\or an\or ean\or an\or an\or an\or an\or an\or ean\or
-    an\or an\or an\or ean\or an\or an\or an\or an\or ean\or n\fi %
+    an\or an\or an\or ean\or an\or an\or an\or an\or ean\or n\fi%
   }{%
     \ifcase\number#1 %declination for the day (absolutive case)
     \or a\or a\or a\or a\or a\or a\or a\or a\or a\or a\or \or
     a\or a\or a\or a\or a\or a\or a\or a\or a\or a\or a\or a\or
     a\or a\or a\or a\or a\or a\or a\or\fi%
-  }
- % space intended
+  }%
 }
 %    \end{macrocode}
 %\end{macro}
@@ -268,7 +267,7 @@
 		  \or ko \or ko \or eko \or ko \or ko \or ko  
 		  \or ko \or eko								
 		\fi%
-\space}
+}
 %    \end{macrocode}
 %\end{macro}
 %
@@ -355,7 +354,7 @@
    \renewcommand*\DTMdisplaydate[4]{%
      \DTMifbool{basque}{showyear}%
      {%
-       \number##1 % space intended
+       \number##1%
        \DTMbasqueyearmonthsep
      }%
      {}%
@@ -367,7 +366,7 @@
    \renewcommand*\DTMDisplaydate[4]{%
      \DTMifbool{basque}{showyear}%
      {%
-       \number##1 % space intended
+       \number##1%
        \DTMbasqueyearmonthsep
        \DTMbasquemonthname{##2}%
      }%
@@ -428,11 +427,11 @@
     \renewcommand*\DTMdisplaydate[4]{%
       \DTMifbool{basque}{showdayofmonth}%
       {%
-        \number##3 % space intended
+        \number##3%
         \DTMbasquedatesep
       }%
       {}%
-      \number##2 % space intended
+      \number##2%
       \DTMifbool{basque}{showyear}%
       {%
         \DTMbasquedatesep
