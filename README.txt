@@ -1,7 +1,9 @@
 Basque Language Module for datetime2 Package
+Version: 1.2
 
-Author: Nicola L. C. Talbot (inactive)
-
+Authors: Nicola L. C. Talbot (inactive)
+         Zunbeltz Izaola
+	 
 Licence: LPPL
 
 Required Packages: datetime2, tracklang
