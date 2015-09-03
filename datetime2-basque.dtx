@@ -37,7 +37,7 @@
             pdftitle={datetime2.sty Basque Module}]{hyperref}
 
 
-\CheckSum{378}
+\CheckSum{377}
 
 \renewcommand*{\usage}[1]{\hyperpage{#1}}
 \renewcommand*{\main}[1]{\hyperpage{#1}}
@@ -289,8 +289,13 @@
 %
 %\begin{macro}{\DTMbasquedatesep}
 % The separator for the numeric date format.
+%
+% There is no clear tradition for the puctuation mark to separe the numbers. 
+% Spanish tradition will use either slash (/) or en-dash (-). I couldn't find typographic guidelines on the french tradition.
+% I choose the slash over the en-dash because I found that more compact dates are nicer.
+% 
 %    \begin{macrocode}
-\newcommand*{\DTMbasquedatesep}{.}
+\newcommand*{\DTMbasquedatesep}{/}
 %    \end{macrocode}
 %\end{macro}
 %

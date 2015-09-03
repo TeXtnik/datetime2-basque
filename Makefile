@@ -1,5 +1,6 @@
 smalltest: datetime2-basque-small-test.pdf
-test: datetime2-basque-test.pdf
+longtest: datetime2-basque-test.pdf 
+test: smalltest longtest
 doc: datetime2-basque.pdf
 
 datetime2-basque-test.pdf: datetime2-basque.ldf datetime2-basque-test.tex
