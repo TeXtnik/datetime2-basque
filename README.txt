@@ -7,6 +7,7 @@ Licence: LPPL
 Required Packages: datetime2, tracklang
 
 This module is maintained by Zunbeltz Izaola.
+If you find any bug or you have any suggestion contact to zunbeltz@gmail.com
 
 Example usage:
 
