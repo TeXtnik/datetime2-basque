@@ -430,17 +430,17 @@
  {basque-numeric}% label
  {% date style
     \renewcommand*\DTMdisplaydate[4]{%
-      \DTMifbool{basque}{showdayofmonth}%
+      \DTMifbool{basque}{showyear}%
       {%
-        \number##3%
+        \number##1%
         \DTMbasquedatesep
       }%
       {}%
       \number##2%
-      \DTMifbool{basque}{showyear}%
+      \DTMifbool{basque}{showdayofmonth}%
       {%
         \DTMbasquedatesep
-        \number##1 % space intended
+        \number##3 % space intended
       }%
       {}%
     }%
